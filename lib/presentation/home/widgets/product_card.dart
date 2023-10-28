@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../common/components/space_height.dart';
 import '../../../common/constants/colors.dart';
+import '../../product_detail/product_detail_page.dart';
 import '../product_model.dart';
-
 
 class ProductCard extends StatelessWidget {
   final ProductModel data;
@@ -13,10 +13,10 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(builder: (context) => const ProductDetailPage()),
-        // );
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const ProductDetailPage()),
+        );
       },
       child: Container(
         decoration: BoxDecoration(
