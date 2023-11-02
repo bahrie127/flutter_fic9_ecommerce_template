@@ -1,6 +1,7 @@
 import 'package:fic9_ecommerce_template_app/common/constants/images.dart';
 import 'package:fic9_ecommerce_template_app/common/extensions/int_ext.dart';
 import 'package:fic9_ecommerce_template_app/presentation/cart/widgets/cart_tile.dart';
+import 'package:fic9_ecommerce_template_app/presentation/shipping_address/shipping_address_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../common/components/button.dart';
@@ -75,7 +76,79 @@ class _CartPageState extends State<CartPage> {
               );
             },
           ),
-          if (carts.isNotEmpty) const SpaceHeight(70.0),
+          if (carts.isNotEmpty) const SpaceHeight(16.0),
+          //button for choose shipping address
+          if (carts.isNotEmpty)
+            Button.filled(
+              width: 60,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ShippingAddressPage()),
+                );
+              },
+              label: 'Pilih Alamat Pengiriman',
+            ),
+          const SpaceHeight(16.0),
+          // show alamat pengiriman
+          if (carts.isNotEmpty)
+            Container(
+              padding: const EdgeInsets.all(16.0),
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.all(Radius.circular(5.0)),
+                border: Border.all(color: ColorName.border),
+              ),
+              child: const Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Alamat Pengiriman',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  SpaceHeight(16.0),
+                  Text(
+                    'Nama Lengkap',
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                      color: ColorName.grey,
+                    ),
+                  ),
+                  SpaceHeight(8.0),
+                  Text(
+                    'Alamat Lengkap',
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                      color: ColorName.grey,
+                    ),
+                  ),
+                  SpaceHeight(8.0),
+                  Text(
+                    'Kota, Provinsi, Kode Pos',
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                      color: ColorName.grey,
+                    ),
+                  ),
+                  SpaceHeight(8.0),
+                  Text(
+                    'No Handphone',
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                      color: ColorName.grey,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          const SpaceHeight(16.0),
           if (carts.isNotEmpty)
             Container(
               padding: const EdgeInsets.all(16.0),
@@ -90,16 +163,16 @@ class _CartPageState extends State<CartPage> {
                     value: 1750000.currencyFormatRp,
                   ),
                   const SpaceHeight(12.0),
-                  RowText(
+                  const RowText(
                     label: 'Biaya Pengiriman',
-                    value: 150000.currencyFormatRp,
+                    value: 'Free Ongkir', //150000.currencyFormatRp,
                   ),
                   const SpaceHeight(40.0),
                   const Divider(color: ColorName.border),
                   const SpaceHeight(12.0),
                   RowText(
                     label: 'Total Harga',
-                    value: 1900000.currencyFormatRp,
+                    value: 1750000.currencyFormatRp,
                     valueColor: ColorName.primary,
                     fontWeight: FontWeight.w700,
                   ),

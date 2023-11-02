@@ -52,22 +52,21 @@ class _PaymentPageState extends State<PaymentPage> {
           },
         ),
       )
-      ..loadRequest(Uri.parse(
-          'https://checkout-staging.xendit.co/v2/653b9f07a28e644a5bae21b5'));
+      ..loadRequest(Uri.parse(widget.url));
+    const oneSec = Duration(seconds: 8);
+    Timer.periodic(oneSec, (Timer timer) {
+      //do check payment status here
+      //if status is success, navigate to success page
+      // Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) {
+      //   return const SuccessPage();
+      // }));
+    });
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     //call check status every 5 seconds with timer
-    const oneSec = Duration(seconds: 8);
-    Timer.periodic(oneSec, (Timer timer) {
-      //do check payment status here
-      //if status is success, navigate to success page
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) {
-        return const SuccessPage();
-      }));
-    });
 
     return Scaffold(
       body: WebViewWidget(controller: _controller!),
