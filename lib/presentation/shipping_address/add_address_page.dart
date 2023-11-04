@@ -47,39 +47,43 @@ class _AddAddressPageState extends State<AddAddressPage> {
       body: ListView(
         padding: const EdgeInsets.all(16.0),
         children: [
-          ValueListenableBuilder(
-            valueListenable: selectedCountry,
-            builder: (context, value, _) => CustomDropdown(
-              value: value,
-              items: const ['Indonesia', 'Inggris'],
-              label: 'Negara atau wilayah',
-              onChanged: (value) => selectedCountry.value = value!,
-            ),
-          ),
           const SpaceHeight(24.0),
           CustomTextField2(
             controller: firstNameController,
-            label: 'Nama Depan',
-          ),
-          const SpaceHeight(24.0),
-          CustomTextField2(
-            controller: lastNameController,
-            label: 'Nama Belakang',
+            label: 'Nama Lengkap',
           ),
           const SpaceHeight(24.0),
           CustomTextField2(
             controller: addressController,
             label: 'Alamat Jalan',
+            maxLines: 3,
           ),
           const SpaceHeight(24.0),
           CustomTextField2(
-            controller: cityController,
-            label: 'Kota',
+            controller: phoneNumberController,
+            label: 'No Handphone',
+            keyboardType: TextInputType.number,
           ),
           const SpaceHeight(24.0),
-          CustomTextField2(
-            controller: provinceController,
+          CustomDropdown(
+            value: 'DIY',
+            items: const ['DIY', 'JATENG'],
             label: 'Provinsi',
+            onChanged: (value) {},
+          ),
+          const SpaceHeight(24.0),
+          CustomDropdown(
+            value: 'Sleman',
+            items: const ['Sleman', 'Bantul'],
+            label: 'Provinsi',
+            onChanged: (value) {},
+          ),
+          const SpaceHeight(24.0),
+          CustomDropdown(
+            value: 'Mlati',
+            items: const ['Mlati', 'Turi'],
+            label: 'Kecamatan',
+            onChanged: (value) {},
           ),
           const SpaceHeight(24.0),
           CustomTextField2(
@@ -88,11 +92,6 @@ class _AddAddressPageState extends State<AddAddressPage> {
             keyboardType: TextInputType.number,
           ),
           const SpaceHeight(24.0),
-          CustomTextField2(
-            controller: phoneNumberController,
-            label: 'No Handphone',
-            keyboardType: TextInputType.number,
-          ),
         ],
       ),
       bottomNavigationBar: Padding(

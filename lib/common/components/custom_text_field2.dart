@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import 'space_height.dart';
@@ -9,6 +8,7 @@ class CustomTextField2 extends StatelessWidget {
   final Function(String value)? onChanged;
   final bool obscureText;
   final TextInputType? keyboardType;
+  final int maxLines;
 
   const CustomTextField2({
     super.key,
@@ -17,6 +17,7 @@ class CustomTextField2 extends StatelessWidget {
     this.onChanged,
     this.obscureText = false,
     this.keyboardType,
+    this.maxLines = 1,
   });
 
   @override
@@ -47,6 +48,7 @@ class CustomTextField2 extends StatelessWidget {
               borderSide: const BorderSide(color: Colors.grey),
             ),
           ),
+          maxLines: maxLines,
         ),
       ],
     );
