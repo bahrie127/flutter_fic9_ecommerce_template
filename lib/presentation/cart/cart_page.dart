@@ -1,3 +1,4 @@
+import 'package:fic9_ecommerce_template_app/common/components/custom_dropdown.dart';
 import 'package:fic9_ecommerce_template_app/common/constants/images.dart';
 import 'package:fic9_ecommerce_template_app/common/extensions/int_ext.dart';
 import 'package:fic9_ecommerce_template_app/presentation/cart/widgets/cart_tile.dart';
@@ -79,16 +80,19 @@ class _CartPageState extends State<CartPage> {
           if (carts.isNotEmpty) const SpaceHeight(16.0),
           //button for choose shipping address
           if (carts.isNotEmpty)
-            Button.filled(
-              width: 60,
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const ShippingAddressPage()),
-                );
-              },
-              label: 'Pilih Alamat Pengiriman',
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 40),
+              child: Button.filled(
+                width: 60,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ShippingAddressPage()),
+                  );
+                },
+                label: 'Pilih Alamat Pengiriman',
+              ),
             ),
           const SpaceHeight(16.0),
           // show alamat pengiriman
@@ -149,6 +153,20 @@ class _CartPageState extends State<CartPage> {
               ),
             ),
           const SpaceHeight(16.0),
+          //container for dropdown courier
+          if (carts.isNotEmpty)
+            Container(
+                padding: const EdgeInsets.all(16.0),
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.all(Radius.circular(5.0)),
+                  border: Border.all(color: ColorName.border),
+                ),
+                child: CustomDropdown(
+                  value: 'JNE',
+                  items: ['JNE', 'J&T'],
+                  label: 'Kurir',
+                  onChanged: (value) {},
+                )),
           if (carts.isNotEmpty)
             Container(
               padding: const EdgeInsets.all(16.0),
@@ -165,7 +183,7 @@ class _CartPageState extends State<CartPage> {
                   const SpaceHeight(12.0),
                   const RowText(
                     label: 'Biaya Pengiriman',
-                    value: 'Free Ongkir', //150000.currencyFormatRp,
+                    value: 'Rp 22.000', //150000.currencyFormatRp,
                   ),
                   const SpaceHeight(40.0),
                   const Divider(color: ColorName.border),

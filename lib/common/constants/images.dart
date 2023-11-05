@@ -8,6 +8,17 @@ class Images {
 
   //icon cart
   static const String iconCart = 'assets/icons/Cart.png';
+  static const String iconBag = 'assets/icons/Bag.png';
+  static const String iconLocation = 'assets/icons/Location.png';
+
+  //icon message
+  static const String iconMessage = 'assets/icons/Message.png';
+
+  //icon password
+  static const String iconPassword = 'assets/icons/Password.png';
+
+  //icon phone
+  static const String iconPhone = 'assets/icons/Phone.png';
 
   //icon user
   static const String iconUser = 'assets/icons/User.png';
